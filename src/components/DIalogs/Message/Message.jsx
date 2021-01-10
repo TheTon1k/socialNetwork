@@ -2,7 +2,8 @@ import React from 'react'
 import s from '../Dialogs.module.css'
 
 const Message = (props) => {
-    return <div className={s.message}>{props.message}</div>
+    if (props.id !== 0) return <div className={s.friendMessage}>{props.message}</div>
+    else return <div className={`${s.accMessage}`}>{props.message}</div>
 }
 
 

@@ -1,17 +1,43 @@
-.dialogs{
+.dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+
+
 }
-.dialogItems{
+
+.dialogItems {
     padding: 10px;
 }
 
-.active{
+.active {
     color: gold;
 }
 
-.messages{
+.messages {
     padding: 10px;
+    width: 80%;
+    background-color: #65adbf;
 }
-.message{
+
+.accMessage {
+    text-align: right;
+    background: #fff;
+
+
+}
+
+.friendMessage {
+    text-align: left;
+    background-color: #a7bf83;
+}
+
+.messages div {
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.avaImg{
+    width: 50px;
+    height: 50px;
 }
