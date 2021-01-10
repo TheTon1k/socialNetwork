@@ -18,7 +18,8 @@ let state = {
             {id: 2, message: 'How are you'},
             {id: 3, message: 'YO'},
             {id: 4, message: 'YO'},
-            {id: 5, message: 'YOOOOO!O!!OO!O!O!!!'},]
+            {id: 5, message: 'YOOOOO!O!!OO!O!O!!!'},],
+        newMessageText: ''
     },
     profilePage: {
         posts: [
@@ -45,13 +46,27 @@ export let addPost = () => {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    renderEntiredTree(state, addPost)
+    renderEntiredTree(state)
 
 }
 
+export let addMessage = (message) => {
+    let newMessage = {
+        id: 6,
+        message: message
+    }
+    state.dialogsPage.messages.push(newMessage)
+    renderEntiredTree(state)
+}
+window.state =state.dialogsPage
+
+export let updateNewMessageText = (val) => {
+    state.dialogsPage.newMessageText = val;
+    renderEntiredTree(state)
+}
 export let updateNewPostText = (val) => {
     state.profilePage.newPostText = val;
-    renderEntiredTree(state, addPost)
+    renderEntiredTree(state)
 
 }
 
