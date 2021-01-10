@@ -1,5 +1,6 @@
-import {renderEntiredTree} from "../render";
-
+let renderEntiredTree = () => {
+    console.log('state changed')
+}
 let state = {
     dialogsPage: {
         dialogs: [
@@ -37,7 +38,7 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
 
     let newPost = {
         id: 5,
@@ -50,24 +51,29 @@ export let addPost = () => {
 
 }
 
-export let addMessage = (message) => {
+export const addMessage = (message) => {
     let newMessage = {
         id: 6,
         message: message
     }
     state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText =''
     renderEntiredTree(state)
 }
-window.state =state.dialogsPage
+window.state = state.dialogsPage
 
-export let updateNewMessageText = (val) => {
+export const updateNewMessageText = (val) => {
     state.dialogsPage.newMessageText = val;
     renderEntiredTree(state)
 }
-export let updateNewPostText = (val) => {
+
+export const updateNewPostText = (val) => {
     state.profilePage.newPostText = val;
     renderEntiredTree(state)
+}
 
+export let subscribe = (observer) => {
+    renderEntiredTree = observer
 }
 
 export default state
