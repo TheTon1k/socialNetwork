@@ -2,7 +2,8 @@ import React from 'react';
 import s from './FriendsSidebar.module.css'
 
 const FriendsSidebar = (props) => {
-    let sidebar = props.sidebar.map(f => {
+    let sidebar = props.sidebar.map( f => {
+
         return (
             <div className={s.ilblock}>
                 <img
