@@ -3,19 +3,22 @@ import store from "./redux/redux_store";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
+import {Provider} from "react-redux";
 
 let renderEntiredTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App state={state} store ={store}/>
+                <Provider store={store}>
+                    <App asd ={store}/>
+                </Provider>
             </React.StrictMode>
         </BrowserRouter>, document.getElementById('root')
     );
 }
 renderEntiredTree(store.getState())
 
-store.subscribe(()=>{
+store.subscribe(() => {
     let state = store.getState()
     renderEntiredTree(state)
 })

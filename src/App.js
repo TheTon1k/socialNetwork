@@ -14,7 +14,7 @@ function App(props) {
     return (
         <div className="app-wrapper">
             <Header/>
-            <Navbar state={props.store.getState().sideBar}/>
+            <Navbar state={props.asd.getState().sideBar}/>
             <div className={'app-wrapper-content'}>
                 <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
                 <Route path='/profile' render={() => <Profile store={props.store}/>}/>
