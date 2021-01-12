@@ -1,6 +1,6 @@
 import dialogsReducer from "./dialogs_reducer";
 import profileReducer from "./profile_reducer";
-import sideBarReducer from "./sidebar_reducer";
+import sidebarReducer from "./sidebar_reducer";
 
 
 export let store = {
@@ -53,7 +53,7 @@ export let store = {
     dispatch(action) {
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action)
         this._state.profilePage = profileReducer(this._state.profilePage,action)
-        this._state.sideBar = sideBarReducer(this._state.sideBar,action)
+        this._state.sideBar = sidebarReducer(this._state.sideBar,action)
         this._callSubscriber(this._state)
 
     }
