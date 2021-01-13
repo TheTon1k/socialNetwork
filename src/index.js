@@ -5,20 +5,11 @@ import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {Provider} from "react-redux";
 
-let renderEntiredTree = (state) => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <React.StrictMode>
-                <Provider store={store}>
-                    <App asd ={store}/>
-                </Provider>
-            </React.StrictMode>
-        </BrowserRouter>, document.getElementById('root')
-    );
-}
-renderEntiredTree(store.getState())
-
-store.subscribe(() => {
-    let state = store.getState()
-    renderEntiredTree(state)
-})
+ReactDOM.render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <Provider store={store}>
+                <App asd={store}/>
+            </Provider>
+        </React.StrictMode>
+    </BrowserRouter>, document.getElementById('root'))

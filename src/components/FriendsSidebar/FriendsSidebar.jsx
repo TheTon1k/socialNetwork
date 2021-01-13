@@ -5,7 +5,7 @@ const FriendsSidebar = (props) => {
     let sidebar = props.sidebar.map( f => {
 
         return (
-            <div className={s.ilblock}>
+            <div className={s.ilblock} key={f.id}>
                 <img
                     src="https://img.favpng.com/25/1/17/avatar-user-computer-icons-software-developer-png-favpng-7SbFpNeqKqhhTrrrnHFUqk6U4.jpg"
                     alt="" className={`${s.sidebarImg} ${s.block}`}/>
