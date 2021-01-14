@@ -1,0 +1,22 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+}
+.blocks {
+    display: inline-block;
+}
+
+.blocks.left{
+    width: 10%;
+}
+.blocks.right{
+    vertical-align: top;
+    width: 80%;
+    padding-top: 10px;
+}
+.userElement{
+    padding:10px;
+}
+button{
+    width: 100px;
+}

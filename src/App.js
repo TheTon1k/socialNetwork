@@ -8,6 +8,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/DIalogs/DialogsContainer";
+import UserContainer from "./components/Users/UsersContainer";
 
 
 function App(props) {
@@ -16,8 +17,9 @@ function App(props) {
             <Header/>
             <Navbar state={props.asd.getState().sideBar}/>
             <div className={'app-wrapper-content'}>
-                <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path='/profile' render={() => <Profile store={props.store}/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                <Route path='/profile' render={() => <Profile/>}/>
+                <Route path='/users' render={() => <UserContainer/>}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
