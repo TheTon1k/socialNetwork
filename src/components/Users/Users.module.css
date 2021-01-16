@@ -4,19 +4,17 @@
 }
 .blocks {
     display: inline-block;
+    margin-left: 10px;
 }
 
-.blocks.left{
-    width: 10%;
-}
-.blocks.right{
-    vertical-align: top;
-    width: 80%;
-    padding-top: 10px;
-}
+
 .userElement{
     padding:10px;
 }
 button{
     width: 100px;
+}
+.selectedPage{
+    font-weight: bold;
+    color: greenyellow;
 }
