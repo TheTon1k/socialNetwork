@@ -3,13 +3,15 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_NEW_CURRENT_PAGE = 'SET_NEW_CURRENT_PAGE'
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
+const SET_PRELOADER = 'SET_PRELOADER'
 
 
 let initialState = {
     users: [],
     currentPage: 1,
     usersTotalCount: 0,
-    pageSize: 5
+    pageSize: 5,
+    preloader:false
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -48,15 +50,20 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, usersTotalCount: action.usersTotalCount
             }
+        case SET_PRELOADER:
+            return {
+                ...state, preloader: action.isLoad
+            }
         default:
             return state
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId})
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUserAC = (users) => ({type: SET_USERS, users})
-export const setNewCurrentPageAC = (newPage) => ({type: SET_NEW_CURRENT_PAGE, newPage})
-export const setUsersTotalCountAC = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount})
+export const follow = (userId) => ({type: FOLLOW, userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const setCurrentPage = (newPage) => ({type: SET_NEW_CURRENT_PAGE, newPage})
+export const setUsersTotalCount = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount})
+export const setPreloader = (isLoad) => ({type: SET_PRELOADER, isLoad})
 
 export default usersReducer
