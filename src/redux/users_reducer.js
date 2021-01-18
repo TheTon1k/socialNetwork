@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS'
 const SET_NEW_CURRENT_PAGE = 'SET_NEW_CURRENT_PAGE'
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 const SET_PRELOADER = 'SET_PRELOADER'
+const TOGGLE_FOLLOWING_BUTTON = 'TOGGLE_FOLLOWING_BUTTON'
 
 
 let initialState = {
@@ -11,7 +12,8 @@ let initialState = {
     currentPage: 1,
     usersTotalCount: 0,
     pageSize: 5,
-    preloader:false
+    preloader: false,
+    followingInProgress: []
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -53,6 +55,14 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, preloader: action.isLoad
             }
+        case  TOGGLE_FOLLOWING_BUTTON: {
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId)
+        }
+        }
         default:
             return state
     }
@@ -64,5 +74,6 @@ export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (newPage) => ({type: SET_NEW_CURRENT_PAGE, newPage})
 export const setUsersTotalCount = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount})
 export const setPreloader = (isLoad) => ({type: SET_PRELOADER, isLoad})
+export const toggleFollowingButton = (isFetching,userId) => ({type: TOGGLE_FOLLOWING_BUTTON, isFetching,userId})
 
 export default usersReducer

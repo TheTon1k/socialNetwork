@@ -2,7 +2,6 @@ import React from 'react'
 import style from './Users.module.css';
 import userPhoto from '../../assets/images/user.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
 
 
 const Users = (props) => {
@@ -27,35 +26,40 @@ const Users = (props) => {
                             <img src={u.photos.small ? u.photos.small : userPhoto} className={style.avatar}/>
                         </NavLink>
                         <div>
-                            {u.followed ? <button onClick={() => {
-                                props.userAPI.unfollowUser(u.id)
-                                    .then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                    })
-                            }}>Unfollow</button>
+                            {u.followed ?
+                                <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingButton(true, u.id)
+                                    props.userAPI.unfollowUser(u.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                            props.toggleFollowingButton(false, u.id)
+                                        })
+                                }}>Unfollow</button>
 
-                                : <button onClick={() => {
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingButton(true, u.id)
                                     props.userAPI.followUser(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.follow(u.id)
                                             }
+                                            props.toggleFollowingButton(false, u.id)
                                         })
                                 }}>Follow</button>}
-                                </div>
-                                </div>
-                                <div className={`${style.blocks}`}>
-                                {u.name}<br/>
-                                {u.status}<br/>
-                                {'u.location.city'}<br/>
-                                {'u.location.country'}<br/>
-                                </div>
+                        </div>
+                    </div>
+                    <div className={`${style.blocks}`}>
+                        {u.name}<br/>
+                        {u.status}<br/>
+                        {'u.location.city'}<br/>
+                        {'u.location.country'}<br/>
+                    </div>
 
-                                </div>)}
-                                </div>)
-                                }
+                </div>)}
+        </div>)
+}
 
 
-                                export default Users;
+export default Users;
