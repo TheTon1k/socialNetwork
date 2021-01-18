@@ -8,7 +8,7 @@ const Header = (props) => {
         <img src='https://www.freelogodesign.org/Content/img/logo-ex-7.png' />
 
         <div className={s.loginBlock}>
-            {props.login? props.login: <NavLink to='/login'>LogIn</NavLink>}
+            {props.isAuth? props.login: <NavLink to='/login'>LogIn</NavLink>}
         </div>
     </header>
 }

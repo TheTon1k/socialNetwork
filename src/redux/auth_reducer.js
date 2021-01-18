@@ -12,7 +12,8 @@ const authRecuder = (state=initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA: {
             return {
-                ...state, ...action.data
+                ...state, ...action.data,
+                isAuth: true
             }
         }
         default:
@@ -20,7 +21,7 @@ const authRecuder = (state=initialState, action) => {
 
     }
 }
-debugger
+
 export const setNewUserData = ({id, email, login})=>({type:SET_USER_DATA,data:{id,email,login}})
 
 export default authRecuder
