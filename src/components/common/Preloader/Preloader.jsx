@@ -2,7 +2,7 @@ import React from 'react'
 import preloader from '../../../assets/images/preloader.svg'
 
 const Preloader = (props)=>{
-    return <div><img src={props.preloader ? preloader:null} alt=""/></div>
+    return <div><img src={preloader}/></div>
 }
 
 export default Preloader

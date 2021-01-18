@@ -39,7 +39,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            <Preloader preloader={this.props.preloader}/>
+            {this.props.preloader ? <Preloader/>:null}
             <Users onPageChanged={this.onPageChanged}
                    usersTotalCount={this.props.usersTotalCount}
                    pageSize={this.props.pageSize}
