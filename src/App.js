@@ -11,7 +11,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 
 
-function App(props) {
+function App() {
     return (
         <div className="app-wrapper">
             <HeaderContainer/>

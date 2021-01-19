@@ -15,9 +15,12 @@ const Users = (props) => {
             <div>
                 {pages.map(p => {
                     return <span key={p} onClick={() => {
+
                         props.onPageChanged(p)
-                    }} className={props.currentPage === p ? style.selectedPage : null}>{p}</span>
-                })}
+                    }
+                    } className={props.currentPage === p ? style.selectedPage : null}>{p}</span>
+                })
+                }
             </div>
             {
                 props.users.map(u => <div key={u.id} className={style.userElement}>
@@ -28,25 +31,11 @@ const Users = (props) => {
                         <div>
                             {u.followed ?
                                 <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.toggleFollowingButton(true, u.id)
-                                    props.userAPI.unfollowUser(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unfollow(u.id)
-                                            }
-                                            props.toggleFollowingButton(false, u.id)
-                                        })
+                                    props.unfollow(u.id)
                                 }}>Unfollow</button>
 
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.toggleFollowingButton(true, u.id)
-                                    props.userAPI.followUser(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(u.id)
-                                            }
-                                            props.toggleFollowingButton(false, u.id)
-                                        })
+                                    props.follow(u.id)
                                 }}>Follow</button>}
                         </div>
                     </div>
