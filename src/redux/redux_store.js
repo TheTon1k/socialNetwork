@@ -11,10 +11,11 @@ let reducers = combineReducers({
     profilePage: profile_reducer,
     sideBar: sidebarReducer,
     usersPage: usersReducer,
-    auth: authRecuder
+    auth: authRecuder,
+
 })
 
 let store = createStore(reducers,applyMiddleware(thunkMiddleWare))
 
-window.state = store.getState()
+window.store = store
 export default store
