@@ -8,7 +8,7 @@ export const validationPostsandDialogsForm =yup.object().shape({
 })
 
 export const validateLoginForm = yup.object().shape({
-    login: yup.string()
+    email: yup.string()
         .min(3, 'Должно быть более трех символов')
         .max(30, 'Должно быть менее 30 символов')
         .required('Поле обязательно для заполнения'),
