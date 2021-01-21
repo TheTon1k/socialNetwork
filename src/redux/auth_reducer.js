@@ -1,15 +1,14 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
-const SET_ERROR = 'SET_ERROR'
 
 
 let initialState = {
-    id: null,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
-    error: ''
 }
 
 const authRecuder = (state = initialState, action) => {
@@ -20,13 +19,7 @@ const authRecuder = (state = initialState, action) => {
                 ...action.payload,
             }
         }
-        case SET_ERROR: {
-            return {
-                ...state,
-                error: action.error
 
-            }
-        }
         default:
             return state
     }
@@ -36,7 +29,6 @@ export const setNewUserData = (userId, email, login, isAuth) => ({
     type: SET_USER_DATA,
     payload: {userId, email, login, isAuth}
 })
-export const setError = (error='') => ({type: SET_ERROR,error})
 
 
 export const getAuthUserData = () => (dispatch) => {
@@ -55,9 +47,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
-            } else if (response.data.resultCode !== 0) {
-
-                dispatch(setError(response.data.messages[0]))
+            } else {
+                dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
             }
         })
 }
@@ -66,7 +57,6 @@ export const logout = () => (dispatch) => {
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setNewUserData(null, null, null, false))
-                dispatch(setError())
             }
         })
 }

@@ -1,12 +1,14 @@
-.error{
-    border:2px solid red
+.error textarea, .error input {
+    border: 2px solid red
 }
-.error:focus{
+
+.error:focus {
     outline: none;
-    border:2px solid red
+    border: 2px solid red
 
 }
-.errorMessage{
+
+.errorMessage {
     color: red;
     font-weight: bolder;
 }
