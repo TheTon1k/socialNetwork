@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import Navbar from "./components/Navbar/Navbar";
-import {Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -10,9 +10,10 @@ import UserContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/app_reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/redux_store";
 
 
 class App extends React.Component {
@@ -45,5 +46,13 @@ const mapStateToProps =(state)=>{
         initialized:state.initialize.initialized
     }
 }
+let SamuraiJSApp =(props)=>{
+   return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+}
 
-export default connect(mapStateToProps, {initializeApp})(App);
+let AppContainer =  connect(mapStateToProps, {initializeApp})(App);
+export default SamuraiJSApp
