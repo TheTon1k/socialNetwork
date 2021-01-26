@@ -7,14 +7,14 @@ import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators";
 import style from '../../utils/ErorsValidate.module.css'
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit,error,}) => {
 
-    return <form onSubmit={props.handleSubmit}>
+    return <form onSubmit={handleSubmit}>
         <Field name={'email'} placeholder={'email'} component={Input} validate={required}/>
         <Field name={'password'} placeholder={'password'} component={Input} type={'password'} validate={required}/>
         <Field name={'rememberMe'} component={Input} type={'checkbox'}/> remember me
         <div className={style.errorMessage} >
-            {props.error}
+            {error}
         </div>
         <button>Log in</button>
     </form>

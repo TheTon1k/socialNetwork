@@ -1,14 +1,14 @@
 import React from 'react'
 import style from '../../../utils/ErorsValidate.module.css'
 
-const FormControl = ({input, meta, child, ...props}) => {
-    let touchedError = meta.touched && meta.error
+const FormControl = ({meta:{touched,error}, children}) => {
+    let touchedError = touched && error
     return (
         <div>
             <div className={touchedError && style.error}>
-                {props.children}
+                {children}
             </div>
-            {touchedError && <span className={style.errorMessage}>{meta.error}</span>}
+            {touchedError && <span className={style.errorMessage}>{error}</span>}
         </div>
     )
 }

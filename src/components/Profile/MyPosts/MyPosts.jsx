@@ -5,14 +5,15 @@ import {Field, reduxForm} from "redux-form";
 import {max, required} from "../../../utils/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 
-const max10 =max(10)
+const max10 = max(10)
 
 const NewPostForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
 
-            <Field component={Textarea} name={'newPostBody'} placeholder={'Enter your message'} validate={[required,max10]}/>
+            <Field component={Textarea} name={'newPostBody'} placeholder={'Enter your message'}
+                   validate={[required, max10]}/>
             <div>
                 <button>Post</button>
             </div>
@@ -20,12 +21,12 @@ const NewPostForm = (props) => {
 
     )
 }
-const AddPostFormRedux = reduxForm({form:'addPostForm'})(NewPostForm)
+const AddPostFormRedux = reduxForm({form: 'addPostForm'})(NewPostForm)
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
     let postsElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount}/>)
 
-    let addNewPost =(values)=>{
+    let addNewPost = (values) => {
 
         props.addNewPost(values.newPostBody)
     }
@@ -40,6 +41,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default MyPosts;
